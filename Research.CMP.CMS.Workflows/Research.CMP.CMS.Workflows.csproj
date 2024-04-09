@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <OutputType>Library</OutputType>
+        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="EPiServer.CMS" Version="12.27.0" />
+        <PackageReference Include="EPiServer.CMS.AspNetCore" Version="12.20.3" />
+        <PackageReference Include="EPiServer.CMS.UI" Version="12.27.0" />
+        <PackageReference Include="EPiServer.Framework" Version="12.20.3" />
+        <PackageReference Include="Flurl" Version="4.0.0" />
+        <PackageReference Include="Flurl.Http" Version="4.0.2" />
+    </ItemGroup>
+
+</Project>
