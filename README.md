@@ -36,14 +36,13 @@ Install the nuget package. The nuget can be found here:
 ```json
 "EPiServer": {
     "Cms": {
-    	....
-    	"CmpCmsWorkflow": {
+		"CmpCmsWorkflow": {
 			"ClientId": "client-id",
 			"ClientSecret": "client-secret",
 			"ExternalSystemId": "external-system-id"
 		}
     }
-
+}
 ```
 
 ### Startup.cs
