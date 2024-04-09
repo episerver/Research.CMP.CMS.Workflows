@@ -61,9 +61,9 @@ public class WebhooksController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] ExternalWorkManagement request)
     {
-        if (request.Data.ExternalWork.ExternalSystem != _options.Value.ExternalSystemId)
-            return Ok("ID not found");
-        
+        if ((request?.Data?.ExternalWork?.ExternalSystem ?? "does-not-exist") != _options.Value.ExternalSystemId)
+            return Ok("ID not found"); // if it's not an External System notification, ignore it
+
         _cmpTaskContentService.SyncContent(request);
         Console.WriteLine(JsonConvert.SerializeObject(request));
         return Ok("OK");
