@@ -1,5 +1,7 @@
 using Flurl;
 using Flurl.Http;
+using Microsoft.Extensions.Options;
+using Research.CMP.CMS.Workflows.Models;
 using Research.CMP.CMS.Workflows.REST.Authorization;
 
 namespace Research.CMP.CMS.Workflows;
@@ -11,11 +13,11 @@ public class CmpApiClient
     private AuthorizationResponse _token = null;
     private DateTime _tokenExpiry = DateTime.Now;
     
-    public CmpApiClient(string clientId, string clientSecret)
+    public CmpApiClient(IOptions<CmpCmsWorkflowOptions> options)
     {
         //FlurlHttp.Clients.UseNewtonsoft();
-        ClientId = clientId;
-        ClientSecret = clientSecret;
+        ClientId = options.Value.ClientId;
+        ClientSecret = options.Value.ClientSecret;
     }
 
     #region Authorization
