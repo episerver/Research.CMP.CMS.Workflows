@@ -65,6 +65,12 @@ public class CmpApiClient
         var token = await GetToken(this.ClientId, this.ClientSecret);
         return url.WithOAuthBearerToken(token.AccessToken).GetJsonAsync<T>().Result;
     }
+    
+    public async Task<int> PatchTask(string url, object data)
+    {
+        var token = await GetToken(this.ClientId, this.ClientSecret);
+        return url.WithOAuthBearerToken(token.AccessToken).PatchJsonAsync(data).Result.StatusCode;
+    }
     #endregion
     
 }
