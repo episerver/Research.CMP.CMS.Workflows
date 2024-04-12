@@ -40,11 +40,6 @@ public class CmpTaskContentService
     }
     public void SyncContent(ExternalWorkManagement request)
     {
-        if (request.Data.ExternalWork.ExternalSystem != CMPTasksConstants.ExternalSystemName)
-        {
-            return;
-        }
-
         try
         {
             
