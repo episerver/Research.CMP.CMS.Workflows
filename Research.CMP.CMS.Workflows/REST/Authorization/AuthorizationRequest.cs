@@ -1,20 +1,19 @@
-﻿
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Research.CMP.CMS.Workflows.REST.Authorization
 {
     public class AuthorizationRequest
     {
-        [JsonProperty("grant_type")]
+        [JsonPropertyName("grant_type")]
         public string GrantType { get; set; } = "client_credentials";
 
-        [JsonProperty("scope")]
+        [JsonPropertyName("scope")]
         public string Scope { get; set; } = "scope";
 
-        [JsonProperty("client_id")]
+        [JsonPropertyName("client_id")]
         public string ClientId { get; set; }
 
-        [JsonProperty("client_secret")]
+        [JsonPropertyName("client_secret")]
         public string ClientSecret { get; set; }
     }
 }
