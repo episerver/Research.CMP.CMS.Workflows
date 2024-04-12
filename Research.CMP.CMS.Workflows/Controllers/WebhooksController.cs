@@ -6,6 +6,7 @@ using EPiServer.DataAbstraction.Activities;
 using Research.CMP.CMS.Workflows.REST.EWM;
 using Research.CMP.CMS.Workflows.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Research.CMP.CMS.Workflows.Models;
 
@@ -20,17 +21,20 @@ public class WebhooksController : ControllerBase
     private readonly ActivityService _activityService;
     private readonly CmpTaskContentService _cmpTaskContentService;
     private readonly IOptions<CmpCmsWorkflowOptions> _options;
+    private readonly ILogger<WebhooksController> _log;
 
     public WebhooksController(
         IContentRepository contentRepository,
         ActivityService activityService,
         CmpTaskContentService cmpTaskContentService,
-        IOptions<CmpCmsWorkflowOptions> options)
+        IOptions<CmpCmsWorkflowOptions> options,
+        ILogger<WebhooksController> logger)
     {
         _contentRepository = contentRepository;
         _activityService = activityService;
         _cmpTaskContentService = cmpTaskContentService;
         _options = options;
+        _log = logger;
     }
 
     [HttpGet]
@@ -65,7 +69,7 @@ public class WebhooksController : ControllerBase
             return Ok("ID not found"); // if it's not an External System notification, ignore it
 
         _cmpTaskContentService.SyncContent(request);
-        Console.WriteLine(JsonConvert.SerializeObject(request));
+        _log.LogDebug(JsonConvert.SerializeObject(request));
         return Ok("OK");
     }
 }

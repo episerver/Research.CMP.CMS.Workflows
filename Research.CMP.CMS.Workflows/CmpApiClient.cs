@@ -1,5 +1,6 @@
 using Flurl;
 using Flurl.Http;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Research.CMP.CMS.Workflows.Models;
 using Research.CMP.CMS.Workflows.REST.Authorization;
@@ -8,13 +9,15 @@ namespace Research.CMP.CMS.Workflows;
 
 public class CmpApiClient
 {
+    private readonly ILogger<CmpApiClient> _log;
     private string ClientId { get; }
     private string ClientSecret { get; }
     private AuthorizationResponse _token = null;
     private DateTime _tokenExpiry = DateTime.Now;
     
-    public CmpApiClient(IOptions<CmpCmsWorkflowOptions> options)
+    public CmpApiClient(IOptions<CmpCmsWorkflowOptions> options, ILogger<CmpApiClient> logger)
     {
+        _log = logger;
         //FlurlHttp.Clients.UseNewtonsoft();
         ClientId = options.Value.ClientId;
         ClientSecret = options.Value.ClientSecret;
@@ -42,7 +45,7 @@ public class CmpApiClient
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _log.LogError(e.Message);
             throw;
         }
 

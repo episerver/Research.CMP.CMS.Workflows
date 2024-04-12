@@ -5,6 +5,7 @@ using EPiServer.DataAbstraction.Activities;
 using EPiServer.DataAccess;
 using EPiServer.Security;
 using EPiServer.Web;
+using Microsoft.Extensions.Logging;
 using Research.CMP.CMS.Workflows.Helpers;
 using Research.CMP.CMS.Workflows.Models;
 using Research.CMP.CMS.Workflows.REST.EWM;
@@ -16,6 +17,7 @@ namespace Research.CMP.CMS.Workflows.Services;
 public class CmpTaskContentService
 {
     private readonly CmpApiClient _cmpApiClient;
+    private readonly ILogger<CmpTaskContentService> _log;
     private readonly IContentRepository _contentRepository;
     private readonly IContentLoader _contentLoader;
     private readonly IActivityQueryService _activityQueryService;
@@ -26,13 +28,15 @@ public class CmpTaskContentService
         IContentLoader contentLoader,
         IActivityRepository activityRepository,
         CmpTasksContentLocator cmpTasksContentLocator,
-        CmpApiClient cmpApiClient)
+        CmpApiClient cmpApiClient,
+        ILogger<CmpTaskContentService> logger)
 
     {
         _contentRepository = contentRepository;
         _contentLoader = contentLoader;
         _cmpTasksContentLocator = cmpTasksContentLocator;
         _cmpApiClient = cmpApiClient;
+        _log = logger;
     }
     public void SyncContent(ExternalWorkManagement request)
     {
@@ -45,7 +49,7 @@ public class CmpTaskContentService
         {
             
             var cmpTasksFolderRef = GetOrCreateCmpTasksFolder();
-            Console.WriteLine($"cmpTasksFolderRef = {cmpTasksFolderRef.ID}");
+            _log.LogDebug($"cmpTasksFolderRef = {cmpTasksFolderRef.ID}");
 
             var allCmpTasks = _cmpTasksContentLocator
                 .GetAll<CmpTaskBlock>(SiteDefinition.Current.GlobalAssetsRoot);
@@ -94,7 +98,7 @@ public class CmpTaskContentService
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _log.LogError(e.Message);
         }
     }
 
