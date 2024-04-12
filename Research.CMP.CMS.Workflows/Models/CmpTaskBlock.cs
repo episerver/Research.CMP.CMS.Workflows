@@ -14,7 +14,7 @@ public class CmpTaskBlock : BlockData
     [Editable(false)]
     public virtual string Comment { get; set; }
 
-    [Display(Order = 1, GroupName = SystemTabNames.Content)]
+    [Display(Order = 1, GroupName = SystemTabNames.Content, Description = "Only 'Completed' action is allowed from the CMS Side")]
     [SelectOne(SelectionFactoryType = typeof(StatusSelectionFactory))]
     public virtual string Status { get; set; } = StatusSelectionFactory.NotStarted;
     
