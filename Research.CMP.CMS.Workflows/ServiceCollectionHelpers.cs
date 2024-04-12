@@ -1,3 +1,5 @@
+using Flurl.Http;
+using Flurl.Http.Newtonsoft;
 using Microsoft.Extensions.DependencyInjection;
 using Research.CMP.CMS.Workflows.Models;
 using Research.CMP.CMS.Workflows.Services;
@@ -12,6 +14,7 @@ public static class ServiceCollectionHelpers
         {
             services.Configure(configureOptions);
         }
+        FlurlHttp.Clients.UseNewtonsoft();
         services.AddSingleton<CmpTaskContentService>();
         services.AddSingleton<CmpApiClient>();
     }

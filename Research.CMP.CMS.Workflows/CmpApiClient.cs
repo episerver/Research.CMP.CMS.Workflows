@@ -18,7 +18,6 @@ public class CmpApiClient
     public CmpApiClient(IOptions<CmpCmsWorkflowOptions> options, ILogger<CmpApiClient> logger)
     {
         _log = logger;
-        //FlurlHttp.Clients.UseNewtonsoft();
         ClientId = options.Value.ClientId;
         ClientSecret = options.Value.ClientSecret;
     }

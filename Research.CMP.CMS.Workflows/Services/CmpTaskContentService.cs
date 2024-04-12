@@ -1,11 +1,9 @@
-using System.Text.Json;
-using EPiServer;
-using EPiServer.Core;
 using EPiServer.DataAbstraction.Activities;
 using EPiServer.DataAccess;
 using EPiServer.Security;
 using EPiServer.Web;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Research.CMP.CMS.Workflows.Helpers;
 using Research.CMP.CMS.Workflows.Models;
 using Research.CMP.CMS.Workflows.REST.EWM;
@@ -75,7 +73,7 @@ public class CmpTaskContentService
                     (existingItem as IContent).Name = remoteTask.Title;
                     existingItem.Comment = remoteTask.Steps.First(s => s.Id == request.Data.Step.Id).Description;
                     existingItem.Status = GetStepStatus(remoteTask, request.Data.Step.Id, request.Data.SubStep.Id);
-                    existingItem.JsonData = JsonSerializer.Serialize(request);
+                    existingItem.JsonData = JsonConvert.SerializeObject(request);
                     _contentRepository.Save((IContent) existingItem, 
                         SaveAction.Publish | SaveAction.ForceCurrentVersion,
                         AccessLevel.NoAccess);

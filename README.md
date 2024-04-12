@@ -5,6 +5,11 @@ This integration allows you to create an external workflow task in Optimizely CM
 The idea for this integration is to create something similar that we have example for Jira and Adobe CC, where you have an external workflow step that is completely managed outside CMP.
 The integration is not tied to working on a specific page or block in the CMS that is selected from CMP. The task can include any kind of updates of one or more content items on the web site. The editor in CMS doesn't need to login to CMP to read the instructions or to mark the task as done, this is completely managed in CMS.
 
+# Features and Screenshots
+
+- When an external workflow step is triggered it's reflected under "Tasks" in the CMS
+- The CMS User can updated the status of the task in the CMP
+
 # Configuration
 
 ## CMP
@@ -48,6 +53,7 @@ Install the nuget package. The nuget can be found here:
 ### Startup.cs
 
 ```csharp
+services.AddControllers().AddNewtonsoftJson(); // This is needed for compatiblity with NewtonSoft
 services.AddCmpCmsWorkflows();
 ```
 

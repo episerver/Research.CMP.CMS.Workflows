@@ -1,126 +1,103 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Research.CMP.CMS.Workflows.REST.EWM
 {
     public partial class ExternalWorkManagement
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("event_name")]
+        [JsonProperty("event_name", NullValueHandling = NullValueHandling.Ignore)]
         public string EventName { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("data")]
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
         public Data Data { get; set; }
     }
 
     public partial class Data
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("task")]
+        [JsonProperty("task", NullValueHandling = NullValueHandling.Ignore)]
         public EwmTask Task { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("step")]
+        [JsonProperty("step", NullValueHandling = NullValueHandling.Ignore)]
         public Step Step { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("sub_step")]
+        [JsonProperty("sub_step", NullValueHandling = NullValueHandling.Ignore)]
         public SubStep SubStep { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("external_work")]
+        [JsonProperty("external_work", NullValueHandling = NullValueHandling.Ignore)]
         public ExternalWork ExternalWork { get; set; }
     }
 
     public partial class ExternalWork
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("external_system")]
+        [JsonProperty("external_system", NullValueHandling = NullValueHandling.Ignore)]
         public string ExternalSystem { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("links")]
+        [JsonProperty("links", NullValueHandling = NullValueHandling.Ignore)]
         public ExternalWorkLinks Links { get; set; }
     }
 
     public partial class ExternalWorkLinks
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("self")]
+        [JsonProperty("self", NullValueHandling = NullValueHandling.Ignore)]
         public Uri Self { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("task")]
+        [JsonProperty("task", NullValueHandling = NullValueHandling.Ignore)]
         public Uri Task { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("sub_step")]
+        [JsonProperty("sub_step", NullValueHandling = NullValueHandling.Ignore)]
         public Uri SubStep { get; set; }
     }
 
     public partial class Step
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("id")]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("links")]
+        [JsonProperty("links", NullValueHandling = NullValueHandling.Ignore)]
         public StepLinks Links { get; set; }
     }
 
     public partial class StepLinks
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("task")]
+        [JsonProperty("task", NullValueHandling = NullValueHandling.Ignore)]
         public Uri Task { get; set; }
     }
 
     public partial class SubStep
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("id")]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("links")]
+        [JsonProperty("links", NullValueHandling = NullValueHandling.Ignore)]
         public SubStepLinks Links { get; set; }
     }
 
     public partial class SubStepLinks
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("self")]
+        [JsonProperty("self", NullValueHandling = NullValueHandling.Ignore)]
         public Uri Self { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("task")]
+        [JsonProperty("task", NullValueHandling = NullValueHandling.Ignore)]
         public Uri Task { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("external_work")]
+        [JsonProperty("external_work", NullValueHandling = NullValueHandling.Ignore)]
         public Uri ExternalWork { get; set; }
     }
 
     public partial class EwmTask
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("id")]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("links")]
+        [JsonProperty("links", NullValueHandling = NullValueHandling.Ignore)]
         public EwmTaskLinks Links { get; set; }
     }
 
     public partial class EwmTaskLinks
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("self")]
+        [JsonProperty("self", NullValueHandling = NullValueHandling.Ignore)]
         public Uri Self { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("assets")]
+        [JsonProperty("assets", NullValueHandling = NullValueHandling.Ignore)]
         public Uri Assets { get; set; }
     }
 }
