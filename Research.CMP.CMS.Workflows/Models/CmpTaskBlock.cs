@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using EPiServer.Shell;
 using EPiServer.Shell.ObjectEditing;
 using Research.CMP.CMS.Workflows.UI;
 
@@ -30,4 +31,17 @@ public class CmpTaskBlock : BlockData
     [Display(Order = 10, GroupName = CMPTasksConstants.TabName)]
     [Editable(false)]
     public virtual string JsonData { get; set; }
+}
+
+[UIDescriptorRegistration]
+public class CmpTaskBlockUIDescriptor : UIDescriptor<CmpTaskBlock>
+{
+    public CmpTaskBlockUIDescriptor()
+        : base(ContentTypeCssClassNames.SharedBlock)
+    {
+        this.DefaultView = CmsViewNames.AllPropertiesView;
+        this.AddDisabledView(CmsViewNames.PreviewView);
+        this.AddDisabledView(CmsViewNames.OnPageEditView);
+        this.IsPrimaryType = true;
+    }
 }
