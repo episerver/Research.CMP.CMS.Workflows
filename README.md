@@ -11,7 +11,7 @@ The integration is not tied to working on a specific page or block in the CMS th
 - When an external workflow step is triggered it is reflected under "Tasks" in the CMS
 - The CMS user can update the status of the task in the CMP
 
-# Configuration
+## Configuration
 
 ## 1. CMP
 
@@ -92,7 +92,7 @@ In ConfigureServices(...) add:
 services.AddCmpCmsWorkflows();
 ```
 
-# 3. Example 
+## 3. Example 
 
 ## 3.1 Create task in CMP 
 
