@@ -79,7 +79,25 @@ Your CMS instance needs to have a public facing url for the CMP to be able to se
 
 # Example 
 
-## Create task in CMP based on your new workflow 
+## Create task in CMP 
+
+Create a new task in CMP and select your new workflow. 
+
+![](assets/CMP-task-workflow.png)
+
+Write the task in the **description** of the external step. In this case, the task to perform is to update the company address in the footer of thw website. 
+
+## Perform the task in CMS
+
+The editor in CMS will now see the new task in the task pane. 
+
+![](assets/CMS-task-info.png)
+
+Click the task to read the instructions. Perform the task, then come back to the task instructions, update the status from "InProgress" to "Completed" and then click the Publish button.
+
+The step in CMP will now be marked as Completed. 
+
+
 
 
 
