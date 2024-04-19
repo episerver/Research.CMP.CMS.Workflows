@@ -35,7 +35,7 @@ Create a new Webhook and give it a name ("My-CMS-Webhook"). As the Callback url 
 
 **Note:** Your CMS instance needs to have a public facing url for the CMP to be able to send Webhook notifications.
 
-For **Secret**, use the value you generated when creating the App.
+For **Secret**, you can use the value you generated when creating the App or set a new value.
 
 ![](assets/CMP-webhook-settings.png)
 
@@ -66,7 +66,7 @@ Install the nuget package. The nuget can be found here:
 
 ### 2.1 AppSettings.json
 
-**ClientId** and **ClientSecret** corresponds to the values created in the App in CMP. **ExternalSystemID** is the name you created for your external system (i e "My-CMS" in the example in the screenshot).
+**ClientId** and **ClientSecret** corresponds to the values created in the App in CMP. **ExternalSystemID** is the name you created for your external system (i e "My-CMS" in the example in the screenshot). The **WebhookSecret** should match the value from the Webhook settings.
 
 ```json
 "EPiServer": {
