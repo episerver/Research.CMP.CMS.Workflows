@@ -116,6 +116,8 @@ The editor in CMS will now see the new task in the task pane.
 
 The step in **CMP** will now be marked as **Completed**.
 
+**Note:** The nuget package will create a new Block type called CMP Task, that are also stored in a folder called CMPTasks.
+
 ---
 
 **Good luck :)**
