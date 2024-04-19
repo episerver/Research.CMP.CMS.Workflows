@@ -10,6 +10,7 @@ The integration is not tied to working on a specific page or block in the CMS th
 - The editor in CMP can create a task that will be be managed in CMS
 - When an external workflow step is triggered it is reflected under "Tasks" in the CMS
 - The CMS user can update the status of the task in the CMP
+- With this integration one CMP instance can connect to multiple instances of CMS
 
 ## Configuration
 
