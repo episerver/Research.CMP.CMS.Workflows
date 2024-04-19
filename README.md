@@ -98,7 +98,7 @@ services.AddCmpCmsWorkflows();
 
 ## 3. Example
 
-## 3.1 Create task in CMP
+### 3.1 Create task in CMP
 
 Create a new task in CMP and select your new workflow.
 
@@ -106,7 +106,7 @@ Create a new task in CMP and select your new workflow.
 
 Write the instructions of the task you want the CMS editor to perform as the **description** of the external step. In this case, the task is to update the company address in the footer of the website. Hit the **Sync button**.
 
-## 3.2 Perform the task in CMS
+### 3.2 Perform the task in CMS
 
 The editor in CMS will now see the new task in the task pane.
 
@@ -115,5 +115,7 @@ The editor in CMS will now see the new task in the task pane.
 **Click the task** to read the instructions. Perform the task, then come back to the task instructions, and **update the status from "InProgress" to "Completed" and then click the Publish button**.
 
 The step in **CMP** will now be marked as **Completed**.
+
+---
 
 **Good luck :)**
