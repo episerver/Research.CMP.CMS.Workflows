@@ -6,4 +6,5 @@ public class CmpCmsWorkflowOptions
     public string ClientId { get; set; }
     public string ClientSecret { get; set; }
     public string ExternalSystemId { get; set; }
+    public string WebhookSecret { get; set; }
 }

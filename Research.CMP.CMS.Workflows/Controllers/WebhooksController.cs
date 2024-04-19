@@ -65,8 +65,16 @@ public class WebhooksController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] ExternalWorkManagement request)
     {
+        HttpContext.Request.Headers.TryGetValue("Callback-Secret", out var callbackSecret);
+        if (callbackSecret.Any())
+        {
+            if (callbackSecret.First() != _options.Value.WebhookSecret)
+                return Ok("WebhookSecret does not match, ignoring request"); 
+        }
+
         if ((request?.Data?.ExternalWork?.ExternalSystem ?? "does-not-exist") != _options.Value.ExternalSystemId)
-            return Ok("ID not found"); // if it's not an External System notification, ignore it
+            // if it's not an External System notification or if the external system id does not match, ignore it
+            return Ok("ExternalSystemId does not match, ignoring request"); 
 
         _cmpTaskContentService.SyncContent(request);
         _log.LogDebug(JsonConvert.SerializeObject(request));

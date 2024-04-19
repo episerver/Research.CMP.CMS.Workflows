@@ -7,6 +7,11 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Version>1.0.0</Version>
+        <Authors>Optimizely Presales</Authors>
+        <Company>Optimizely</Company>
+        <Description>
+            This integration allows you to create an external workflow task in Optimizely CMP, where the task is managed in Optimizely CMS and the CMS editor can complete the task without having access to CMP.
+        </Description>
     </PropertyGroup>
     
     <ItemGroup>

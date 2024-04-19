@@ -15,11 +15,11 @@ The integration is not tied to working on a specific page or block in the CMS th
 
 ## 1. CMP
 
-- You need administration permissions to configure the integration in CMP. 
+- You need administration permissions to configure the integration in CMP.
 
 ### 1.1 Create an App
 
-Give your app a **name** ("My-CMS") and input the **public url** of your website. The callback url can be left empty or set to the same url. 
+Give your app a **name** ("My-CMS") and input the **public url** of your website. The callback url can be left empty or set to the same url.
 
 ![](assets/CMP-site-settings.png)
 
@@ -34,7 +34,7 @@ Create a new Webhook and give it a name ("My-CMS-Webhook"). As the Callback url 
 
 **Note:** Your CMS instance needs to have a public facing url for the CMP to be able to send Webhook notifications.
 
-For **Secret**, use the value you generated when creating the App. 
+For **Secret**, use the value you generated when creating the App.
 
 ![](assets/CMP-webhook-settings.png)
 
@@ -44,8 +44,8 @@ Select the below events. Make sure that you only check the **"External Work Mana
 
 ### 1.3 Create a Workflow with External Step
 
-Create a new workflow. One of the steps should be an **external step**. In this example we create a workflow with three steps: "Plan", "CMS Task", "Publish". 
-The "CMS Task" step is created as an external step. 
+Create a new workflow. One of the steps should be an **external step**. In this example we create a workflow with three steps: "Plan", "CMS Task", "Publish".
+The "CMS Task" step is created as an external step.
 
 ![](assets/CMP-workflow-settings1.png)
 
@@ -55,7 +55,7 @@ For the configuration of the **External Step**, click the **"Manage External Sys
 
 ![](assets/CMP-workflow-external-system.png)
 
-Then select your external system in the **"Select external system" dropdown list**. 
+Then select your external system in the **"Select external system" dropdown list**.
 
 ## 2. CMS
 
@@ -65,7 +65,7 @@ Install the nuget package. The nuget can be found here:
 
 ### 2.1 AppSettings.json
 
-**ClientId** and **ClientSecret** corresponds to the values created in the App in CMP. **ExternalSystemID** is the name you created for your external system (i e "My-CMS" in the example in the screenshot). 
+**ClientId** and **ClientSecret** corresponds to the values created in the App in CMP. **ExternalSystemID** is the name you created for your external system (i e "My-CMS" in the example in the screenshot).
 
 ```json
 "EPiServer": {
@@ -74,29 +74,32 @@ Install the nuget package. The nuget can be found here:
     "CmpCmsWorkflow": {
       "ClientId": "client-id",
       "ClientSecret": "client-secret",
-      "ExternalSystemId": "external-system-id"
+      "ExternalSystemId": "external-system-id",
+      "WebhookSecret": "secret-from-cmp-webhook"
     }
-
   }
 }
 ```
 
 ### 2.2 Startup.cs
-In usings add: 
+
+In usings add:
+
 ```csharp
 using Research.CMP.CMS.Workflows;
 ```
 
 In ConfigureServices(...) add:
+
 ```csharp
 services.AddCmpCmsWorkflows();
 ```
 
-## 3. Example 
+## 3. Example
 
-## 3.1 Create task in CMP 
+## 3.1 Create task in CMP
 
-Create a new task in CMP and select your new workflow. 
+Create a new task in CMP and select your new workflow.
 
 ![](assets/CMP-task-workflow.png)
 
@@ -104,17 +107,12 @@ Write the instructions of the task you want the CMS editor to perform as the **d
 
 ## 3.2 Perform the task in CMS
 
-The editor in CMS will now see the new task in the task pane. 
+The editor in CMS will now see the new task in the task pane.
 
 ![](assets/CMS-task-info.png)
 
 **Click the task** to read the instructions. Perform the task, then come back to the task instructions, and **update the status from "InProgress" to "Completed" and then click the Publish button**.
 
-The step in **CMP** will now be marked as **Completed**. 
-
+The step in **CMP** will now be marked as **Completed**.
 
 **Good luck :)**
-
-
-
-
